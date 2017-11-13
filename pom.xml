@@ -267,6 +267,7 @@
           <target>1.8</target>
           <encoding>UTF-8</encoding>
           <compilerArguments>
+              <!--将支付宝官方sdk放到该位置，将本地JAR包编译时引入，在提交到线上使用，MAVEN中央仓库没有支付宝SDK，所以只能这样-->
             <extdirs>${project.basedir}/src/main/webapp/WEB-INF/lib</extdirs>
           </compilerArguments>
         </configuration>
