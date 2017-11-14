@@ -45,4 +45,17 @@ public class UserController {
         session.removeAttribute(Const.CURRENT_USER);
         return ServerResponse.createBySuccess();
     }
+    @RequestMapping(value = "register.do",method = RequestMethod.GET)
+//    将返回值转化为json
+    @ResponseBody
+    public ServerResponse<String> register(User user) {
+        return iUserService.register(user);
+    }
+    @RequestMapping(value = "check_valid.do",method = RequestMethod.GET)
+//    将返回值转化为json
+    @ResponseBody
+    //    防止恶意用户通过接口调用注册接口
+    public ServerResponse<String> checkValid(String str, String types) {
+        return iUserService.checkValid(str, types);
+    }
 }
