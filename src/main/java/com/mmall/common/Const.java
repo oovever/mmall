@@ -1,10 +1,18 @@
 package com.mmall.common;
 
+import com.google.common.collect.Sets;
+
+import java.util.Set;
+
 /**
  * Created by OovEver on 2017/11/14.
  */
 public class Const {
-//类型
+    public interface ProductListOrderBy{
+        Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_desc","price_asc");
+    }
+
+    //类型
     public static final String EMAIL = "email";
     public static final String USERNAME = "username";
 //    当前用户
