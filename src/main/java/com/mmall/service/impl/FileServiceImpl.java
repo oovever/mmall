@@ -5,6 +5,7 @@ import com.mmall.service.IFileService;
 import com.mmall.util.FTPUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.util.UUID;
 /**
  * Created by OovEver on 2017/11/15.
  */
+@Service("iFileService")
 public class FileServiceImpl implements IFileService {
     private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
     @Override

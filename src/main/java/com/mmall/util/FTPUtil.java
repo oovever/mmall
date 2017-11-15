@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+import javax.xml.transform.Source;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -76,6 +77,9 @@ public class FTPUtil {
         try {
             ftpClient.connect(ip);
             isSuccess = ftpClient.login(user,pwd);
+            System.out.println(user);
+            System.out.println(pwd);
+
         } catch (IOException e) {
             logger.error("连接FTP服务器异常",e);
         }
