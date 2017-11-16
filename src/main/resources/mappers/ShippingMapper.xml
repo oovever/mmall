@@ -204,11 +204,11 @@
   <select id="selectByShippingIdUserId" resultMap="BaseResultMap" parameterType="map">
     SELECT
     <include refid="Base_Column_List"/>
-    FROM
-    mmall_shipping
-    WHERE id={shippingId}
-    AND user_id=#{userId}
+    from mmall_shipping
+    where id = #{shippingId}
+    and user_id = #{userId}
   </select>
+
 
 
 
