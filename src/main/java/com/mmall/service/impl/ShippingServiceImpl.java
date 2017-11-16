@@ -32,10 +32,22 @@ public class ShippingServiceImpl implements IShippingService {
 
     @Override
     public ServerResponse<String> del(Integer userId, Integer shippingId) {
+//        为了防止横向越权，必须加UserId
         int resultCount = shippingMapper.deleteByShippingIdUserId(userId,shippingId);
         if(resultCount > 0){
             return ServerResponse.createBySuccess("删除地址成功");
         }
         return ServerResponse.createByErrorMessage("删除地址失败");
+    }
+
+    @Override
+    public ServerResponse update(Integer userId, Shipping shipping) {
+//        防止越权，不从登录用户拿，直接用用户来的Userid，会把别人地址更新
+        shipping.setUserId(userId);
+        int rowCount = shippingMapper.updateByShipping(shipping);
+        if(rowCount > 0){
+            return ServerResponse.createBySuccess("更新地址成功");
+        }
+        return ServerResponse.createByErrorMessage("更新地址失败");
     }
 }
