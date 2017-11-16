@@ -14,4 +14,5 @@ public interface ICartService {
 
 
     ServerResponse<CartVo> list (Integer userId);
+    ServerResponse<CartVo> selectOrUnSelect (Integer userId,Integer productId,Integer checked);
 }
