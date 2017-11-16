@@ -201,7 +201,14 @@
   </update>
 
 
-
+  <select id="selectByShippingIdUserId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM
+    mmall_shipping
+    WHERE id={shippingId}
+    AND user_id=#{userId}
+  </select>
 
 
 
