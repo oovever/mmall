@@ -177,7 +177,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-
+  <delete id="deleteByShippingIdUserId" parameterType="map">
+    DELETE  FROM  mmall_shipping
+    where id = #{shippingId}
+    and user_id = #{userId}
+  </delete>
 
 
 
