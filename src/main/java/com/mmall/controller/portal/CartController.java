@@ -74,4 +74,14 @@ public class CartController {
         }
         return iCartService.selectOrUnSelect(user.getId(),null,Const.Cart.CHECKED);
     }
+    @RequestMapping("un_select_all.do")
+    @ResponseBody
+    public ServerResponse<CartVo> unSelectAll(HttpSession session){
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if(user ==null){
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iCartService.selectOrUnSelect(user.getId(),null,Const.Cart.UN_CHECKED);
+    }
+
 }
