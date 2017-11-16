@@ -74,6 +74,7 @@ public class CartController {
         }
         return iCartService.selectOrUnSelect(user.getId(),null,Const.Cart.CHECKED);
     }
+//    全反选
     @RequestMapping("un_select_all.do")
     @ResponseBody
     public ServerResponse<CartVo> unSelectAll(HttpSession session){
@@ -83,5 +84,24 @@ public class CartController {
         }
         return iCartService.selectOrUnSelect(user.getId(),null,Const.Cart.UN_CHECKED);
     }
-
+//单选
+@RequestMapping("select.do")
+@ResponseBody
+public ServerResponse<CartVo> select(HttpSession session,Integer productId){
+    User user = (User)session.getAttribute(Const.CURRENT_USER);
+    if(user ==null){
+        return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+    }
+    return iCartService.selectOrUnSelect(user.getId(),productId,Const.Cart.CHECKED);
+}
+//单反选
+@RequestMapping("un_select.do")
+@ResponseBody
+public ServerResponse<CartVo> unSelect(HttpSession session,Integer productId){
+    User user = (User)session.getAttribute(Const.CURRENT_USER);
+    if(user ==null){
+        return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+    }
+    return iCartService.selectOrUnSelect(user.getId(),productId,Const.Cart.UN_CHECKED);
+}
 }
